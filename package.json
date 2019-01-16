@@ -1,0 +1,32 @@
+{
+  "name": "sr",
+  "version": "1.0.0",
+  "description": "Unblock your event loop! Require modules in a child process effortlessly",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "standard && nyc mocha"
+  },
+  "keywords": [
+    "require",
+    "thread",
+    "process",
+    "child",
+    "async",
+    "event",
+    "loop",
+    "unblock",
+    "event-loop"
+  ],
+  "author": "Diego Rodríguez Baquero (diegorbaquero@gmail.com)",
+  "license": "GPL",
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
+    "request": "^2.88.0",
+    "standard": "^12.0.1"
+  },
+  "dependencies": {}
+}
