@@ -19,9 +19,15 @@ module.exports = module => {
       console.log('get', prop)
       if (!(prop in target)) throw new Error(`${prop} not found in ${module}`)
       if (typeof target[prop] !== 'function') return target[prop]
-      child.send(prop)
+
+      child.send({ type: 'get', prop, id })
       child.ref()
       pendingCount++
+      return new Promise((resolve, reject) => {
+        child.once(id, val => {
+          resolve(val)
+        })
+      })
     },
     apply (target, thisArg, args) {
       console.log('apply', thisArg, args)

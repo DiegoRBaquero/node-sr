@@ -18,12 +18,22 @@ describe('axios', function () {
   })
 
   it('should work without sr', async function () {
-    const body = (await axios.get('http://localhost:4500')).data
+    const body = (await axios('http://localhost:4500')).data
     assert.strictEqual(body, 'OK')
   })
 
   it('should work with sr', async function () {
     const body = (await axiosSr('http://localhost:4500')).data
+    assert.strictEqual(body, 'OK')
+  })
+
+  it('axios.get should work without sr', async function () {
+    const body = (await axios.get('http://localhost:4500')).data
+    assert.strictEqual(body, 'OK')
+  })
+
+  it('axios.get should work with sr', async function () {
+    const body = (await axiosSr.get('http://localhost:4500')).data
     assert.strictEqual(body, 'OK')
   })
 
