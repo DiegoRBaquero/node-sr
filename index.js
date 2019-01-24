@@ -1,4 +1,5 @@
 const { fork } = require('child_process')
+const flatted = require('flatted/cjs')
 
 module.exports = module => {
   const targetModule = require(module)
@@ -10,17 +11,20 @@ module.exports = module => {
 
   child.on('message', msg => {
     if (pendingCount === 0) child.unref()
-    child.emit(msg.id, msg.result)
+    child.emit(msg.id, flatted.parse(msg.result))
   })
 
   return new Proxy(targetModule, {
     get (target, prop) {
+      console.log('get', prop)
       if (!(prop in target)) throw new Error(`${prop} not found in ${module}`)
+      if (typeof target[prop] !== 'function') return target[prop]
       child.send(prop)
       child.ref()
       pendingCount++
     },
     apply (target, thisArg, args) {
+      console.log('apply', thisArg, args)
       let id = Math.floor(Math.random() * 100000)
 
       args = args.map((arg, argIndex) => {
