@@ -1,6 +1,6 @@
 {
   "name": "sr",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Unblock your event loop! Require modules in a child process effortlessly",
   "main": "index.js",
   "directories": {
