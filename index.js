@@ -17,6 +17,8 @@ module.exports = module => {
   return new Proxy(targetModule, {
     get (target, prop) {
       console.log('get', prop)
+      const id = Math.floor(Math.random() * 100000)
+
       if (!(prop in target)) throw new Error(`${prop} not found in ${module}`)
       if (typeof target[prop] !== 'function') return target[prop]
 
@@ -31,7 +33,7 @@ module.exports = module => {
     },
     apply (target, thisArg, args) {
       console.log('apply', thisArg, args)
-      let id = Math.floor(Math.random() * 100000)
+      const id = Math.floor(Math.random() * 100000)
 
       args = args.map((arg, argIndex) => {
         if (typeof arg === 'function') {

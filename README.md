@@ -1,14 +1,15 @@
-# node-sr
+# Super Require
 Unblock your event loop! Require modules in a child process effortlessly
 
 Features:
 - Works with callbacks, promises and async/await
 - Easiest adoption: Just replace `require` with `sr`
+- Only function calls are proxied
 
 ## Install
 
 ```sh
-npm install sr
+npm i sr
 ```
 
 ## Use
@@ -41,3 +42,7 @@ const sr = require('sr')
 
 const module = sr(path.resolve(__dirname, './module'))
 ```
+
+## License
+
+MIT © Diego Rodríguez Baquero - 2019
