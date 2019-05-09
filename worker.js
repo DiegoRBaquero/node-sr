@@ -10,6 +10,7 @@ process.on('message', msg => {
         } : arg
       })
       const result = imp(...args)
+      if (!result) return
       if (typeof result.then !== 'function') return process.send({ id: msg.id, result: flatted.stringify(result) })
       result.then(promiseResult => process.send({ id: msg.id, result: flatted.stringify(promiseResult) }))
       break
