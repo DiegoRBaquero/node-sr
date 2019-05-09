@@ -1,9 +1,10 @@
 const { fork } = require('child_process')
+const { resolve } = require('path')
 const flatted = require('flatted/cjs')
 
 module.exports = module => {
   const targetModule = require(module)
-  const child = fork('./worker.js', [module])
+  const child = fork(resolve(__dirname, './worker.js'), [module])
   child.channel.unref()
   child.unref()
 
@@ -16,7 +17,7 @@ module.exports = module => {
 
   return new Proxy(targetModule, {
     get (target, prop) {
-      console.log('get', prop)
+      // console.log('get', prop)
       const id = Math.floor(Math.random() * 100000)
 
       if (!(prop in target)) throw new Error(`${prop} not found in ${module}`)
@@ -32,7 +33,7 @@ module.exports = module => {
       })
     },
     apply (target, thisArg, args) {
-      console.log('apply', thisArg, args)
+      // console.log('apply', thisArg, args)
       const id = Math.floor(Math.random() * 100000)
 
       args = args.map((arg, argIndex) => {
