@@ -23,7 +23,7 @@
   "author": "Diego Rodríguez Baquero (diegorbaquero@gmail.com)",
   "license": "GPL",
   "devDependencies": {
-    "axios": "0.18.1",
+    "axios": "0.19.2",
     "mocha": "5.2.0",
     "nyc": "13.3.0",
     "request": "2.88.2",
