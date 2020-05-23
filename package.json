@@ -24,7 +24,7 @@
   "license": "GPL",
   "devDependencies": {
     "axios": "0.19.2",
-    "mocha": "5.2.0",
+    "mocha": "7.2.0",
     "nyc": "13.3.0",
     "request": "2.88.2",
     "standard": "14.3.4"
