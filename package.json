@@ -30,6 +30,6 @@
     "standard": "14.3.4"
   },
   "dependencies": {
-    "flatted": "^2.0.0"
+    "flatted": "^3.0.0"
   }
 }
